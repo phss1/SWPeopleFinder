@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "cQt3+b97ggGGNaUwOGq2UOGObedHjHgSAfVcVHMzRtgOoUhwpuMRJIaGTtdhXA6RRVWhEQ60bRQaqF8Ilc+Jxg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\v-peheis\\source\\repos\\CharacterLookup\\CharacterLookup\\CharacterLookup.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\v-peheis\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\v-peheis\\.nuget\\packages\\swapicsharp\\1.2.0\\swapicsharp.1.2.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'SWapiCSharp 1.2.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "SWapiCSharp",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}
