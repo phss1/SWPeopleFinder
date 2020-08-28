@@ -8,21 +8,21 @@ namespace PersonLookup.Pages
 {
     public class ResultsModel : PageModel
     {
-        private readonly IPersonRespository personRepository;
+        private readonly IPersonRepository personRepository;
 
         [BindProperty(SupportsGet = true)]
         public string value { get; set; }
-        public IEnumerable<People> people { get; private set; }
+        public IEnumerable<People> People { get; set; }
 
-        public ResultsModel(IPersonRespository personRepo)
+        public ResultsModel(IPersonRepository personRepo)
         {
-            this.personRepository = personRepo;
+            personRepository = personRepo;
         }
 
-        //function for getting results from azure sql db based on term serached by user. Will return matches if any, and send to the cshtml to display
-        public void OnGet(string value)
+         public void OnGet(string value)
         {
-            people = personRepository.FindPerson(value);
+            //IEnumerable<People> results = (personRepository.FindPerson(value)).;
+            People = personRepository.FindPerson(value);
         }
     }
 }

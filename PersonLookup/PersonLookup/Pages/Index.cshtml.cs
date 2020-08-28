@@ -24,7 +24,7 @@ namespace PersonLookup.Pages
         {
             if (!string.IsNullOrEmpty(SearchTerm))
             {
-                Response.Redirect("/Pages/Results?value=" + SearchTerm);
+                Response.Redirect("/Results?value=" + SearchTerm);
             }
         }
     }

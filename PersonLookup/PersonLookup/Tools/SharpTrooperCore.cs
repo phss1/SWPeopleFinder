@@ -16,7 +16,7 @@ namespace PersonLookup.Tools
             POST
         }
 
-        private string apiUrl = "http://swapi.co/api";
+        private string apiUrl = "http://swapi.dev/api";
         private string _proxyName = null;
 
         public SharpTrooperCore()
