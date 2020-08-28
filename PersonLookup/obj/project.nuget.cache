@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "1rjD0no/k+Y5frFjIBWUuJjdu54J3oMZuLW7S+RPb8Qsw0LC8gfEqqKjuC1Cs36b25Sa24vn467LXrmkHQ2/AQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\v-peheis\\source\\repos\\SWPeopleFinder\\PersonLookup\\PersonLookup.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\v-peheis\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
