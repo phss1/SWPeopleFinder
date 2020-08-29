@@ -8,17 +8,18 @@ namespace PersonLookup.Models
 {
     public class SpecieRepository : ISpecieRepository
     {
-        private Specie _specie;
-        private SharpTrooperCore core = new SharpTrooperCore();
+        private List<Specie> _specieList;
+        private SharpTrooperCore core2 = new SharpTrooperCore();
 
-        public SpecieRepository(string specieId)
+        public SpecieRepository()
         {
-            _specie = core.GetSpecie(specieId);
+            _specieList = new List<Specie>(core2.GetAllSpecies("").results);
         }
 
-        public Specie GetSpeciesId(string specieId)
+        public IEnumerable<Specie> FindSpecie(string searchTerm)
         {
-            return _specie;
+            IEnumerable<Specie> collection = _specieList;
+            return collection.Where(f => f.name.Contains(searchTerm)).ToList();
         }
     }
 }

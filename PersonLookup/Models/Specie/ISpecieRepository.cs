@@ -1,9 +1,10 @@
 ﻿using PersonLookup.Tools;
+using System.Collections.Generic;
 
 namespace PersonLookup.Models
 {
     public interface ISpecieRepository
     {
-        Specie GetSpeciesId(string specieId);
+        IEnumerable<Specie> FindSpecie(string searchValue);
     }
 }

@@ -11,7 +11,7 @@ namespace PersonLookup.Models
 
         public PersonRepository()
         {
-            _personList = new List<People>(core.GetAllPeople().results);
+            _personList = new List<People>(core.GetAllPeople("").results);
         }
 
         public IEnumerable<People> FindPerson(string searchTerm)

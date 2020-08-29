@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Net;
 using System.Text;
 using System.IO;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Specialized;
+using PersonLookup.Tools;
 
 namespace PersonLookup.Tools
 {
@@ -16,7 +20,7 @@ namespace PersonLookup.Tools
             POST
         }
 
-        private string apiUrl = "http://swapi.dev/api";
+        private string apiUrl = "https://swapi.dev/api";
         private string _proxyName = null;
 
         public SharpTrooperCore()
@@ -75,7 +79,7 @@ namespace PersonLookup.Tools
         }
 
 
-        
+
 
         private T GetSingle<T>(string endpoint, Dictionary<string, string> parameters = null) where T : SharpEntity
         {
@@ -133,10 +137,10 @@ namespace PersonLookup.Tools
             return result;
         }
 
-        private SharpEntityResults<T> GetAllPaginated<T>(string entityName, string pageNumber = "1") where T : SharpEntity
+        private SharpEntityResults<T> GetAllPaginated<T>(string entityName, string pageNumber) where T : SharpEntity
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters.Add("page", pageNumber);
+            parameters = null;//.Add("page", pageNumber);
 
             SharpEntityResults<T> result = GetMultiple<T>(entityName, parameters);
 
@@ -172,7 +176,7 @@ namespace PersonLookup.Tools
         /// <summary>
         /// get all the people resources
         /// </summary>
-        public SharpEntityResults<People> GetAllPeople(string pageNumber = "1")
+        public SharpEntityResults<People> GetAllPeople(string pageNumber)
         {
             SharpEntityResults<People> result = GetAllPaginated<People>("/people/", pageNumber);
 
@@ -191,7 +195,7 @@ namespace PersonLookup.Tools
         /// <summary>
         /// get all the film resources
         /// </summary>
-        public SharpEntityResults<Film> GetAllFilms(string pageNumber = "1")
+        public SharpEntityResults<Film> GetAllFilms(string pageNumber)
         {
             SharpEntityResults<Film> result = GetAllPaginated<Film>("/films/", pageNumber);
 
@@ -210,7 +214,7 @@ namespace PersonLookup.Tools
         /// <summary>
         /// get all the planet resources
         /// </summary>
-        public SharpEntityResults<Planet> GetAllPlanets(string pageNumber = "1")
+        public SharpEntityResults<Planet> GetAllPlanets(string pageNumber)
         {
             SharpEntityResults<Planet> result = GetAllPaginated<Planet>("/planets/", pageNumber);
 
@@ -229,7 +233,7 @@ namespace PersonLookup.Tools
         /// <summary>
         /// get all the specie resources
         /// </summary>
-        public SharpEntityResults<Specie> GetAllSpecies(string pageNumber = "1")
+        public SharpEntityResults<Specie> GetAllSpecies(string pageNumber)
         {
             SharpEntityResults<Specie> result = GetAllPaginated<Specie>("/species/", pageNumber);
 
@@ -267,7 +271,7 @@ namespace PersonLookup.Tools
         /// <summary>
         /// get all the vehicle resources
         /// </summary>
-        public SharpEntityResults<Vehicle> GetAllVehicles(string pageNumber = "1")
+        public SharpEntityResults<Vehicle> GetAllVehicles(string pageNumber)
         {
             SharpEntityResults<Vehicle> result = GetAllPaginated<Vehicle>("/vehicles/", pageNumber);
 

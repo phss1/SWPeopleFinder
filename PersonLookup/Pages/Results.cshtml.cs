@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PersonLookup.Models;
@@ -16,33 +17,38 @@ namespace PersonLookup.Pages
         public IEnumerable<People> People { get; set; }
         private IEnumerable<People> newPeopleLst;
 
-        public ResultsModel(IPersonRepository personRepo)
+        public IEnumerable<Specie> Specie { get; set; }
+
+        public ResultsModel(IPersonRepository personRepo, ISpecieRepository specieRepo)
         {
             personRepository = personRepo;
-        }
-
-        public ResultsModel(ISpecieRepository specieRepo)
-        {
             specieRepository = specieRepo;
         }
 
         public void OnGet(string value)
         {
             newPeopleLst = personRepository.FindPerson(value);
-
-            People = GetPersonSpecies((List<People>)newPeopleLst);
+            IEnumerable<People> people = personRepository.FindPerson(value);
+            People = GetPersonSpecies(people);
         }
 
-        private List<People> GetPersonSpecies(List<People> list)
+        private IEnumerable<People> GetPersonSpecies(IEnumerable<People> list)
         {
-            List<People> newPeopleList;
-
             foreach(People person in list)
             {
-                string speciesUrl = person.species.ToString();
-                Specie specie = specieRepository.GetSpeciesId("1");
-                string specieType = specie.name;
-
+                if(person.species.Count > 0)
+                {
+                    string speciesUrl = person.species.First().ToString();
+                    string[] speciesUrlSplit = speciesUrl.Split("/");
+                    int specieId = speciesUrlSplit.Count() - 2;
+                    string speciesId = speciesUrlSplit[specieId];
+                    Specie specie = specieRepository.FindSpecie(speciesId).First();
+                    person.species.Add(specie.name);
+                }
+                else
+                {
+                    person.species.Add("NA");
+                }
                 
             }
 
